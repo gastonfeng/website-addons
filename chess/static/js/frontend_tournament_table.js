@@ -129,7 +129,7 @@ var TournamentDetail = Widget.extend({
         if (((game.system_status == 'Waiting') || (game.system_status == 'Active game')) &&
         ((this.uid == rowPlayer.id)||(this.uid == columnPlayer.id))) {
             new ToMyGameCell(game).appendTo($row);
-            return;
+
         } else if (game.system_status == 'Game Over') {
             this.render_finished_game($row, game, rowPlayer, columnPlayer);
         } else {

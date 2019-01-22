@@ -88,7 +88,7 @@
        if (!results) return null;
        if (!results[2]) return '';
        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
+    };
 
     /* initialize the external events
     -----------------------------------------------------------------*/
@@ -129,14 +129,14 @@
 
         $('#booking-dialog-confirm').click(function(){
             var $form = $('#booking-dialog').find('form');
-            var $msg = $('#booking-taken-msg')
+            var $msg = $('#booking-taken-msg');
             var d = new Date();
             $form.find("[name=timezone]").val(d.getTimezoneOffset());
             var tr_counter = 0;
             var validated_counter = 0;
             var deferreds = [];
             $form.find('tbody tr').each(function() {
-               var tr_element = $(this)
+                var tr_element = $(this);
                tr_counter = tr_counter + 1;
                deferreds.push(
                   openerp.jsonRpc('/booking/validator', 'call', {'booking': $(this).find('select').attr('name')}).then(function(result) {
@@ -148,7 +148,7 @@
                      }
                   })
                );
-            })
+            });
 
 
             $.when.apply($, deferreds).done(function() {
