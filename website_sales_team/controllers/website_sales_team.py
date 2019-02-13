@@ -15,7 +15,7 @@ class WebsiteSale(controller):
         '/seller/<model("crm.case.section"):seller>'
     ], type='http', auth="public", website=True)
     def seller(self, seller):
-        cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
+         context, pool = request.cr, request.uid, request.context, request.registry
         seller = pool.get('crm.case.section').browse(int(seller))
         values = {
             'seller': seller,
@@ -30,7 +30,7 @@ class WebsiteSale(controller):
                  '/shop/category/<model("product.public.category"):category>/page/<int:page>'
                  ], type='http', auth="public", website=True)
     def shop(self, page=0, category=None, search='', seller=None, **post):
-        cr, uid, context, pool = request.cr, request.uid, request.context, request.registry
+         context, pool = request.cr, request.uid, request.context, request.registry
 
         domain = request.website.sale_product_domain()
         if search:

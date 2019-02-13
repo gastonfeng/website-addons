@@ -60,5 +60,5 @@ class SaleOrder(models.Model):
     child_ids = fields.One2many('sale.order', 'parent_id', 'Child orders')
 
     _track = {
-        'state': {'website_sales_team.mt_order_created': lambda self, cr, uid, obj, ctx=None: obj.state in ['draft']}
+        'state': {'website_sales_team.mt_order_created': lambda self,  obj, ctx=None: obj.state in ['draft']}
     }

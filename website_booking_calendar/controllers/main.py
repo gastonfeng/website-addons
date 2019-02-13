@@ -73,14 +73,14 @@ class WebsiteBookingCalendar(http.Controller):
 
     @http.route('/booking/calendar/slots', type='json', auth='public', website=True)
     def get_free_slots(self, **kwargs):
-        cr, uid, context = request.cr, SUPERUSER_ID, request.context
+         context = request.cr, SUPERUSER_ID, request.context
         return request.registry["sale.order.line"].get_free_slots(kwargs.get('start'),
                                                                   kwargs.get('end'), kwargs.get('tz'), kwargs.get('domain', []), online=True)
 
     @http.route('/booking/calendar/slots/booked', type='json', auth='public', website=True)
     def get_booked_slots(self, **kwargs):
-        cr, uid, context = request.cr, SUPERUSER_ID, request.context
-        return request.registry["sale.order.line"].get_bookings(cr, uid, kwargs.get('start'),
+         context = request.cr, SUPERUSER_ID, request.context
+        return request.registry["sale.order.line"].get_bookings( kwargs.get('start'),
                                                                 kwargs.get('end'), kwargs.get('tz'), kwargs.get('domain', []), online=True, context=context)
 
 

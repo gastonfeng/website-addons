@@ -47,7 +47,7 @@ class WebsiteProposal(http.Controller):
         # use SUPERUSER_ID allow to access/view proposal for public user
         # only if he knows the private token
         uid = token and SUPERUSER_ID or request.uid
-        proposal = request.registry.get('website_proposal.proposal').browse(request.cr, uid, proposal_id)
+        proposal = request.registry.get('website_proposal.proposal').browse(request. proposal_id)
         now = time.strftime('%Y-%m-%d')
         if token:
             if token != proposal.access_token:
@@ -62,7 +62,7 @@ class WebsiteProposal(http.Controller):
         return self._render_proposal(uid, proposal, message)
 
     def _render_proposal(self, uid, proposal, message=None):
-        record = request.registry.get(proposal.res_model).browse(request.cr, uid, proposal.res_id)
+        record = request.registry.get(proposal.res_model).browse(request. proposal.res_id)
         values = {
             'proposal': proposal,
             'message': message and int(message) or False,
@@ -132,7 +132,7 @@ class WebsiteProposal(http.Controller):
 
     def __message_post(self, message, proposal, type='comment', subtype=False, attachments=None):
         request.session.body = message
-        cr, uid, context = request.cr, request.uid, request.context
+         context = request.cr, request.uid, request.context
         user = request.registry['res.users'].browse(uid)
         if 'body' in request.session and request.session.body:
             request.registry.get(proposal.res_model).message_post(proposal.res_id,

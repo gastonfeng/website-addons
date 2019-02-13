@@ -94,7 +94,7 @@ class WebsiteProposal(models.Model):
         'company_id': fields.many2one('res.company', 'Company'),
     }
     _defaults = {
-        'access_token': lambda self, cr, uid, ctx={}: str(uuid.uuid4()),
+        'access_token': lambda self,  ctx={}: str(uuid.uuid4()),
         'company_id': _get_default_company,
         'state': 'draft',
     }
