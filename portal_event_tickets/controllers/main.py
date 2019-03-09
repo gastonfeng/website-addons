@@ -1,15 +1,14 @@
 import logging
 
+from odoo.addons.website.models.website import slug
+from odoo.addons.website_event.controllers.main import WebsiteEventController
+from odoo.addons.website_portal.controllers.main import website_account
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+
 from odoo import http, _
 from odoo.exceptions import AccessError
-from odoo.http import request
 from odoo.fields import Date
-
-from odoo.addons.website_portal.controllers.main import website_account
-from odoo.addons.website_event.controllers.main import WebsiteEventController
-from odoo.addons.website_sale.controllers.main import WebsiteSale
-from odoo.addons.website.models.website import slug
-
+from odoo.http import request
 
 _logger = logging.getLogger(__name__)
 

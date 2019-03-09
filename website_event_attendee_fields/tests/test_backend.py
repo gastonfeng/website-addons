@@ -1,7 +1,6 @@
 import logging
 
 from . import common
-
 from ..controllers.main import WebsiteEventControllerExtended
 
 _logger = logging.getLogger(__name__)

@@ -4,6 +4,7 @@
 # Copyright 2017-2018 Kolushov Alexandr <https://it-projects.info/team/KolushovAlexandr>
 
 from odoo.addons.website_sale.controllers.main import WebsiteSale
+
 from odoo import http
 from odoo.http import request
 

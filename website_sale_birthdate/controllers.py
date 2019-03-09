@@ -1,6 +1,7 @@
 
-from odoo.http import request
 import openerp.addons.website_sale.controllers.main as main
+
+from odoo.http import request
 
 
 class WebsiteSaleBirthdate(main.WebsiteSale):

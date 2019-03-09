@@ -1,7 +1,7 @@
-from odoo import models, fields
 import uuid
-from odoo import tools, _
 
+from odoo import models, fields
+from odoo import tools, _
 
 try:
     from odoo.addons.email_template.email_template import mako_template_env
@@ -15,16 +15,14 @@ except ImportError:
 class WebsiteProposalTemplate(models.Model):
     _name = "website_proposal.template"
     _description = "Proposal Template"
-    _columns = {
-        'name': fields.char('Proposal Template', required=True),
+    name = fields.Char('Proposal Template', required=True)
 
-        'head': fields.text('Html head'),
-        'page_header': fields.html('Page header'),
-        'website_description': fields.html('Description'),
-        'page_footer': fields.html('Page footer'),
+    head = fields.Text('Html head')
+    page_header = fields.Html('Page header')
+    website_description = fields.Html('Description')
+    page_footer = fields.Html('Page footer')
 
-        'res_model': fields.char('Model', help="The database object this template will be applied to"),
-    }
+    res_model = fields.Char('Model', help="The database object this template will be applied to")
 
     def open_template(self):
         return {
@@ -71,27 +69,21 @@ class WebsiteProposal(models.Model):
             res[r.id] = record.name
         return res
 
-    _columns = {
-        'res_name': fields.function(_get_res_name, string='Name', type='char'),
-        'access_token': fields.char('Security Token', required=True, copy=False),
-        'template_id': fields.many2one('website_proposal.template', 'Quote Template', readonly=True),
-        'head': fields.text('Html head'),
-        'page_header': fields.text('Page header'),
-        'website_description': fields.html('Description'),
-        'page_footer': fields.text('Page footer'),
+    res_name = fields.Char(compute='_get_res_name', string='Name', type='char')
+    access_token = fields.Char('Security Token', required=True, copy=False)
+    template_id = fields.Many2one('website_proposal.template', 'Quote Template', readonly=True)
+    head = fields.Text('Html head')
+    page_header = fields.Text('Page header')
+    website_description = fields.Html('Description')
+    page_footer = fields.Text('Page footer')
 
-        'res_model': fields.char('Model', readonly=True, help="The database object this is attached to"),
-        'res_id': fields.integer('Resource ID', readonly=True, help="The record id this is attached to", select=True),
-        'sign': fields.binary('Singature'),
-        'sign_date': fields.datetime('Signing Date'),
-        'signer': fields.binary('Signer'),
-        'state': fields.selection([
-            ('draft', 'Draft'),
-            ('rejected', 'Rejected'),
-            ('done', 'Signed'),
-        ]),
-        'company_id': fields.many2one('res.company', 'Company'),
-    }
+    res_model = fields.Char('Model', readonly=True, help="The database object this is attached to")
+    res_id = fields.Integer('Resource ID', readonly=True, help="The record id this is attached to", index=True)
+    sign = fields.Binary('Singature')
+    sign_date = fields.Datetime('Signing Date')
+    signer = fields.Binary('Signer')
+    state = fields.Selection([('draft', 'Draft'), ('rejected', 'Rejected'), ('done', 'Signed'), ])
+    company_id = fields.Many2one('res.company', 'Company')
     _defaults = {
         'access_token': lambda self, cr, uid, ctx={}: str(uuid.uuid4()),
         'company_id': _get_default_company,
@@ -126,9 +118,7 @@ class WebsiteProposal(models.Model):
 
 class MailMessageSubtype(models.Model):
     _inherit = 'mail.message.subtype'
-    _columns = {
-        'internal': fields.boolean('Internal', help="don't publish these messages")
-    }
+    internal = fields.Boolean('Internal', help="don't publish these messages")
     _defaults = {
         'internal': False
     }

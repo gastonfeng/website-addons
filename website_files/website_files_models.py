@@ -1,7 +1,7 @@
-from odoo import api, models, fields
-
-from odoo.tools import html_escape as escape
 import werkzeug
+
+from odoo import api, models, fields
+from odoo.tools import html_escape as escape
 
 
 class IrAttachment(models.Model):

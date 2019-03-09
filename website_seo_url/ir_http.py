@@ -1,10 +1,11 @@
 import re
 
+from odoo.addons.website.models import website as website_file
+from odoo.addons.website.models.ir_http import ModelConverter, RequestUID
+from odoo.addons.website.models.website import slug as slug_super
+
 from odoo import models, api
 from odoo.http import request
-from odoo.addons.website.models import website as website_file
-from odoo.addons.website.models.website import slug as slug_super
-from odoo.addons.website.models.ir_http import ModelConverter, RequestUID
 
 
 def slug(value):

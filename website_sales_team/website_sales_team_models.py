@@ -1,4 +1,3 @@
-from odoo import SUPERUSER_ID
 from odoo import fields
 from odoo import models
 

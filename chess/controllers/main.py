@@ -1,8 +1,10 @@
-from odoo import http
-from odoo.http import request
-import werkzeug
 import datetime
 import random
+
+import werkzeug
+
+from odoo import http
+from odoo.http import request
 
 
 class Chess(http.Controller):

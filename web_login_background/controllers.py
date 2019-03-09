@@ -1,9 +1,8 @@
-
+from odoo.addons.auth_signup.controllers.main import AuthSignupHome
+from odoo.addons.web.controllers.main import Home
 
 from odoo import http
-from odoo.addons.web.controllers.main import Home
 from odoo.http import request
-from odoo.addons.auth_signup.controllers.main import AuthSignupHome
 
 
 class Background(Home):

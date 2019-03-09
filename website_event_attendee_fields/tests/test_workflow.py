@@ -3,7 +3,6 @@ import logging
 from odoo import api
 from odoo.tests.common import HttpCase
 
-
 _logger = logging.getLogger(__name__)
 
 
