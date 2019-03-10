@@ -1,11 +1,12 @@
-import re
 import json
-from odoo import http
-from odoo.http import request
+import logging
+import re
 
 from odoo.addons.website.controllers.main import Website
 
-import logging
+from odoo import http
+from odoo.http import request
+
 _logger = logging.getLogger(__name__)
 
 

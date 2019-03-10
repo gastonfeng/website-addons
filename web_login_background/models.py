@@ -1,6 +1,6 @@
 
-from random import choice
 import hashlib
+from random import choice
 
 from odoo import fields, api
 from odoo import models

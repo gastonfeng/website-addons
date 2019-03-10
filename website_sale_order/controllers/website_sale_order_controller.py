@@ -1,9 +1,8 @@
+from odoo.addons.website_sale.controllers.main import WebsiteSale as controller
 
 from odoo import SUPERUSER_ID
 from odoo import http
 from odoo.http import request
-
-from odoo.addons.website_sale.controllers.main import WebsiteSale as controller
 
 
 class WebsiteSale(controller):

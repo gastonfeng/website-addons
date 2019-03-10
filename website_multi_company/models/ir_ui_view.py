@@ -5,7 +5,6 @@ import logging
 
 from odoo import models, exceptions, _
 
-
 _logger = logging.getLogger(__name__)
 
 

@@ -1,9 +1,10 @@
 import datetime
+import logging
 import time
+
 from odoo import api
 from odoo import fields
 from odoo import models
-import logging
 
 _logger = logging.getLogger(__name__)
 

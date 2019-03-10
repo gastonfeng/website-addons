@@ -3,11 +3,11 @@
 # Copyright 2017 Artyom Losev
 # License AGPL <http://www.gnu.org/licenses/>.
 
+import json
 import logging
 
 from odoo import http
 from odoo.http import request
-import json
 
 _logger = logging.getLogger(__name__)
 

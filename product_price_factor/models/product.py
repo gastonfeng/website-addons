@@ -1,5 +1,6 @@
-from odoo import models, fields, api
 import odoo.addons.decimal_precision as dp
+
+from odoo import models, fields, api
 
 
 class ProductAttributeValue(models.Model):

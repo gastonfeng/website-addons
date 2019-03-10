@@ -1,6 +1,7 @@
+from odoo.addons.website_sale.controllers.main import WebsiteSale
+
 from odoo import http, _
 from odoo.http import request
-from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class WebsiteSaleRefund(WebsiteSale):

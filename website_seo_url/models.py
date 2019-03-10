@@ -1,5 +1,6 @@
-from odoo import models, api
 from odoo.addons.website.models.website import slugify
+
+from odoo import models, api
 
 
 class SEOURL(models.AbstractModel):

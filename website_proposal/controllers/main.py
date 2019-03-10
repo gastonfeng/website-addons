@@ -18,12 +18,13 @@
 #
 #
 
+import time
+
+import werkzeug
+
 from odoo import SUPERUSER_ID, fields
 from odoo import http
 from odoo.http import request
-import werkzeug
-import time
-
 from odoo.tools.translate import _
 
 

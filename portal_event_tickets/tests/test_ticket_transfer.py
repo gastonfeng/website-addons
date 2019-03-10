@@ -1,7 +1,6 @@
 
-from ..controllers.main import PortalEvent
-
 from .common import TourCase
+from ..controllers.main import PortalEvent
 
 
 class TicketTransfer(TourCase):

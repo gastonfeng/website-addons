@@ -1,12 +1,12 @@
 import re
-import simplejson
+
 import pytz
+import simplejson
+from openerp.addons.website_sale.controllers.main import website_sale as WebsiteSale
 
 from odoo import http, fields, SUPERUSER_ID
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DTF
 from odoo.http import request
-
-from openerp.addons.website_sale.controllers.main import website_sale as WebsiteSale
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as DTF
 
 
 class WebsiteBookingCalendar(http.Controller):
