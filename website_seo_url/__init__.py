@@ -1,2 +1,5 @@
+from . import models
+
+
 def post_load():
-    pass
+    from . import ir_http
