@@ -81,7 +81,7 @@ class WebsiteProposal(models.Model):
         'page_footer': fields.text('Page footer'),
 
         'res_model': fields.char('Model', readonly=True, help="The database object this is attached to"),
-        'res_id': fields.integer('Resource ID', readonly=True, help="The record id this is attached to", select=True),
+        'res_id': fields.integer('Resource ID', readonly=True, help="The record id this is attached to", index=True),
         'sign': fields.binary('Singature'),
         'sign_date': fields.datetime('Signing Date'),
         'signer': fields.binary('Signer'),
