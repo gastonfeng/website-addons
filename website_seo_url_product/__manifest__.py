@@ -28,6 +28,6 @@
     "post_load": None,
     "pre_init_hook": None,
     "post_init_hook": None,
-    "installable": False,
+    "installable": True,
     "auto_install": False,
 }

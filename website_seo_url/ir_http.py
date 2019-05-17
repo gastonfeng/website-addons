@@ -1,11 +1,10 @@
 import re
 
-from odoo.addons.website.models import website as website_file
-from odoo.addons.website.models.ir_http import ModelConverter, RequestUID
-from odoo.addons.website.models.website import slug as slug_super
-
 from odoo import models, api
 from odoo.http import request
+from odoo.addons.website.models import website as website_file
+from odoo.addons.http_routing.models.ir_http import slug as slug_super
+from odoo.addons.base.ir.ir_http import RequestUID, ModelConverter
 
 
 def slug(value):
@@ -23,7 +22,8 @@ website_file.slug = slug
 class ModelConverterCustom(ModelConverter):
 
     def __init__(self, url_map, model=False, domain='[]'):
-        super(ModelConverter, self).__init__(url_map, model)
+        super(ModelConverter, self).__init__(url_map)
+        self.model=model
         self.domain = domain
         #   Original:'(?:(\w{1,2}|\w[A-Za-z0-9-_]+?\w)-)?(-?\d+)(?=$|/)')
         self.regex = r'(?:(\w{1,2}|\w[A-Za-z0-9-_]+?))(?=$|/)'
@@ -40,8 +40,8 @@ class ModelConverterCustom(ModelConverter):
         if field and field in request.registry[self.model]._fields:
             cur_lang = request.lang
             langs = []
-            if request.website:
-                langs = [lg[0] for lg in request.website.get_languages() if lg[0] != cur_lang]
+            # if request.website:
+            #     langs = [lg[0] for lg in request.website.get_languages() if lg[0] != cur_lang]
             langs = [cur_lang] + langs
             context = (request.context or {}).copy()
             for lang in langs:
