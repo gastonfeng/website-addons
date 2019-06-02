@@ -56,11 +56,11 @@ class WebsiteProposal(models.Model):
     _name = 'website_proposal.proposal'
     _rec_name = 'id'
 
-    def _get_default_company(self):
-        company_id = self.env['res.users']._get_company(context=context)
-        if not company_id:
-            raise UserError(_('Error!'), _('There is no default company for the current user!'))
-        return company_id
+    # def _get_default_company(self):
+    #     company_id = self.env['res.users']._get_company(context=context)
+    #     if not company_id:
+    #         raise UserError(_('Error!'), _('There is no default company for the current user!'))
+    #     return company_id
 
     def _get_res_name(self, name, args):
         res = {}
@@ -70,7 +70,7 @@ class WebsiteProposal(models.Model):
         return res
 
     res_name = fields.Char(compute='_get_res_name', string='Name', type='char')
-    access_token = fields.Char('Security Token', required=True, copy=False)
+    access_token = fields.Char('Security Token', required=True, copy=False,default=lambda self: str(uuid.uuid4()),)
     template_id = fields.Many2one('website_proposal.template', 'Quote Template', readonly=True)
     head = fields.Text('Html head')
     page_header = fields.Text('Page header')
@@ -82,13 +82,13 @@ class WebsiteProposal(models.Model):
     sign = fields.Binary('Singature')
     sign_date = fields.Datetime('Signing Date')
     signer = fields.Binary('Signer')
-    state = fields.Selection([('draft', 'Draft'), ('rejected', 'Rejected'), ('done', 'Signed'), ])
-    company_id = fields.Many2one('res.company', 'Company')
-    _defaults = {
-        'access_token': lambda self, cr, uid, ctx={}: str(uuid.uuid4()),
-        'company_id': _get_default_company,
-        'state': 'draft',
-    }
+    state = fields.Selection([('draft', 'Draft'), ('rejected', 'Rejected'), ('done', 'Signed'), ],default= 'draft',)
+    company_id = fields.Many2one('res.company', 'Company',default=lambda self: self.env.user.company_id.id,)
+    # _defaults = {
+    #     'access_token': lambda self, cr, uid, ctx={}: str(uuid.uuid4()),
+    #     'company_id': _get_default_company,
+    #     'state': 'draft',
+    # }
 
     def open_proposal(self):
         return {
@@ -118,7 +118,7 @@ class WebsiteProposal(models.Model):
 
 class MailMessageSubtype(models.Model):
     _inherit = 'mail.message.subtype'
-    internal = fields.Boolean('Internal', help="don't publish these messages")
-    _defaults = {
-        'internal': False
-    }
+    internal = fields.Boolean('Internal', help="don't publish these messages",default=False)
+    # _defaults = {
+    #     'internal': False
+    # }
