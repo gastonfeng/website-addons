@@ -23,7 +23,7 @@
 </template>
 
 <template id="registration_attendee_details" inherit_id="website_event.registration_attendee_details">
-    <xpath expr="//t[@t-foreach='tickets']/div[@class='row']" position="replace">
+    <xpath expr="//t[@t-foreach='tickets']/div[hasclass('row')]" position="replace">
         <div class="row" t-if="event.use_attendees_header">
             <t t-foreach="event.attendee_field_ids" t-as="field">
                 <div t-attf-class="col-md-{{field.width}}"><strong t-raw="field.field_description"/><t t-if="not field.is_required"> <span class="text-muted">(Optional)</span></t></div>
@@ -31,7 +31,7 @@
         </div>
     </xpath>
 
-    <xpath expr="//t[@t-as='att_counter']/div[@class='row mb4']" position="replace">
+    <xpath expr="//t[@t-as='att_counter']/div[hasclass('row', 'mb4')]" position="replace">
         <div class="row" t-att-data-counter="counter" t-att-style="att_counter_odd and 'background-color:#E7E7E7'">
             <div class="message col-md-12"></div>
             <t t-set="attendee_placeholder">[Attendee #%s] </t>

@@ -8,7 +8,7 @@
         </template>
 
         <template id="products_item" inherit_id="website_sale.products_item" name="Product item">
-            <xpath expr="//div[@class='ribbon-wrapper']" position="after">
+            <xpath expr="//div[hasclass('ribbon-wrapper')]" position="after">
                 <div class="ribbon-wrapper-custom ribbon-new">
                     <div class="ribbon btn btn-danger">New</div>
                 </div>
